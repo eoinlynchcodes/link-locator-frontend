@@ -18,10 +18,12 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateAccountPage() {
-  const [login, setLogin] = useState({
+
+  const [create, setCreate] = useState({
+    fullName: "",
     username: "",
     password: "",
   });
@@ -29,23 +31,19 @@ export default function CreateAccountPage() {
   let navigate = useNavigate();
   const [errors, setErrors] = useState(null);
   const handleChange = (e) =>
-    setLogin((prevState) => ({
+    setCreate((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
 
   const onSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post(
-        `https://apidemo.swissai.com/api/v1/login?username=${login.username}&password=${login.password}`
-      )
+    axios.post('http://localhost:5000/createuser', create)
       .then((response) => {
-        localStorage.setItem("auth_key", `${response.data.auth_key}`);
-        navigate("/management");
+        navigate("/login");
       })
       .catch((error) => {
-        setErrors(error);
+        console.log('error: ', error);
       });
   };
 
@@ -119,10 +117,10 @@ export default function CreateAccountPage() {
               <FormControl>
                 <FormLabel htmlFor="username">Full Name:</FormLabel>
                 <Input
-                  id="username"
-                  type="username"
-                  name="username"
-                  value={login.username}
+                  id="fullName"
+                  type="fullName"
+                  name="fullName"
+                  value={create.fullName}
                   onChange={handleChange}
                   required
                 />
@@ -134,7 +132,7 @@ export default function CreateAccountPage() {
                   id="username"
                   type="username"
                   name="username"
-                  value={login.username}
+                  value={create.username}
                   onChange={handleChange}
                   required
                 />
@@ -152,7 +150,7 @@ export default function CreateAccountPage() {
                   </InputRightElement>
                   <Input
                     id="password"
-                    value={login.password}
+                    value={create.password}
                     name="password"
                     type={isOpen ? "text" : "password"}
                     autoComplete="current-password"
@@ -179,7 +177,7 @@ export default function CreateAccountPage() {
             </HStack>
             <Stack spacing="6">
               <Button variant="solid" colorScheme="red" onClick={onSubmit}>
-                Sign in
+                Create Account
               </Button>
             </Stack>
           </Stack>

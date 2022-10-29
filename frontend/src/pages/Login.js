@@ -34,10 +34,10 @@ export default function Login() {
 
   const onSubmit = (event) => {
     event.preventDefault()
-    axios.post(`https://apidemo.swissai.com/api/v1/login?username=${login.username}&password=${login.password}`)
+    axios.post('http://localhost:5000/login', login)
     .then((response) => {
-      localStorage.setItem('auth_key', `${response.data.auth_key}`);
-      navigate("/management");
+      // localStorage.setItem('auth_key', `${response.data.auth_key}`);
+      navigate("/dashboard");
     }).catch((error) => {
       setErrors(error);
     })
@@ -76,9 +76,6 @@ export default function Login() {
             }}
             textAlign="center"
           >
-            {/* <Box w={80} alignSelf="center">
-              <Image src={swissAiLogo} />
-            </Box> */}
             <Heading
               size={useBreakpointValue({
                 base: "xs",
