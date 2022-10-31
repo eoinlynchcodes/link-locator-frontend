@@ -4,13 +4,11 @@ import {
     Container,
     Divider,
     IconButton,
-    Input,
     Stack,
     Text,
   } from '@chakra-ui/react'
   import * as React from 'react'
   import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
-  import { Logo } from './Logo'
   
   export default function Footer(){
     return (
@@ -34,7 +32,6 @@ import {
           }}
           align="start"
         >
-          <Logo />
           <Text color="muted">Create beautiful websites remarkably fast.</Text>
         </Stack>
         <Stack

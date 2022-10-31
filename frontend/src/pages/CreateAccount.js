@@ -38,7 +38,7 @@ export default function CreateAccountPage() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:5000/createuser', create)
+    axios.post('http://localhost:5000/createUser', create)
       .then((response) => {
         navigate("/login");
       })

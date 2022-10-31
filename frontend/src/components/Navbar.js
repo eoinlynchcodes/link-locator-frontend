@@ -1,12 +1,52 @@
-import React from "react";
-import { Flex, Link, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  Container,
+  Flex,
+  HStack,
+  IconButton,
+  useBreakpointValue,
+  useColorModeValue,
+  ButtonGroup,
+} from "@chakra-ui/react";
+import * as React from "react";
+import { FiMenu } from "react-icons/fi";
 
 export default function Navbar() {
+  const isDesktop = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
   return (
-    <Flex bgColor="black" width="100%" align="center">
-      <Link href="/">
-        <Text p={10} color="white">Link Locator</Text>
-      </Link>
-    </Flex>
+    <Box as="nav" boxShadow={useColorModeValue("sm", "sm-dark")}>
+      <Container
+        py={{
+          base: "4",
+          lg: "5",
+        }}
+      >
+        <HStack spacing="10" justify="space-between">
+        <Heading>Link locator</Heading>
+          {isDesktop ? (
+            <Flex justify="space-between" flex="1">
+              <ButtonGroup variant="link" spacing="8">
+                  <Button>Search</Button>
+                </ButtonGroup>
+              <HStack spacing="3">
+                <Button variant="ghost">Sign in</Button>
+                <Button variant="primary">Sign up</Button>
+              </HStack>
+            </Flex>
+          ) : (
+            <IconButton
+              variant="ghost"
+              icon={<FiMenu fontSize="1.25rem" />}
+              aria-label="Open Menu"
+            />
+          )}
+        </HStack>
+      </Container>
+    </Box>
   );
 }

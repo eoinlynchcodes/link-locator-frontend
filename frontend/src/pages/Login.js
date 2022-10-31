@@ -36,10 +36,11 @@ export default function Login() {
     event.preventDefault()
     axios.post('http://localhost:5000/login', login)
     .then((response) => {
-      // localStorage.setItem('auth_key', `${response.data.auth_key}`);
+      localStorage.setItem('userId', `${response.data.userId}`);
+      localStorage.setItem('username', `${response.data.username}`);
       navigate("/dashboard");
     }).catch((error) => {
-      setErrors(error);
+      console.log(error);
     })
   };
 

@@ -1,32 +1,20 @@
 import React from "react";
-import {
-  Container,
-  Box,
-  Heading,
-  Stack,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  FormControl,
-  FormLabel,
-  Button,
-  Text
-} from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import AddLink from './AddLink';
+import LinkList from "./LinkList";
 
 export default function Dashboard() {
+
+  const username = localStorage.getItem('username');
+
   return (
     <>
-      <Box display="flex">
-        <Box border="1px solid red" margin={50} padding={50}>
-          <Heading>Your live links</Heading>
-          <Box>
-            <Text>Goes here</Text>
-          </Box>
+      <Box minH="100vh">
+        <Box p={5} boxShadow="inner" bg="gray.50">
+          <Heading>Good day @{username}</Heading>
         </Box>
-
         <AddLink/>
-        
+        <LinkList username={username}/>
       </Box>
     </>
   );

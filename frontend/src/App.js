@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Container } from "@chakra-ui/react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Homepage from "./pages/Homepage";
@@ -12,7 +11,6 @@ function App() {
   return (
     <>
       <Navbar />
-      <Container minH="100vh">
         <Router>
           <Routes>
             <Route path="/" element={<Homepage />} />
@@ -21,7 +19,6 @@ function App() {
             <Route path="/dashboard" element={<Dashboard/>} />
           </Routes>
         </Router>
-      </Container>
       <Footer/>
     </>
   );
