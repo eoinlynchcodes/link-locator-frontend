@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import CreateAccountPage from "./pages/CreateAccount";
 import Footer from "./components/Footer";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/create" element={<CreateAccountPage/>}/>
             <Route path="/dashboard" element={<Dashboard/>} />
+            <Route path="/search" element={<Search/>} />
           </Routes>
         </Router>
       <Footer/>

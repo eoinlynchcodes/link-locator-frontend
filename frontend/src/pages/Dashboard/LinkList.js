@@ -29,11 +29,10 @@ export default function LinkList({ username }) {
         <Heading>Your live links for {username}</Heading>
         <Box>
           {linkList?.map((item, key) => {
-            console.log("item: ", item);
             return (
               <>
-                <Box key={key} boxShadow="base" bg="white" my={5} p={5}>
-                    <Text>Title to go here</Text>
+                <Box key={item.linkId} boxShadow="base" bg="white" my={5} p={5}>
+                  <Text>Title to go here</Text>
                   <Text>{item.description}</Text>
                   <Link href={item.url} target="_blank">
                     {item.url} <ExternalLinkIcon mx='2px' />

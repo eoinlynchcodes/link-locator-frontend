@@ -19,6 +19,7 @@ export default function AddLink() {
     creatorId,
     url: "",
     description: "",
+    title: "",
     timeCreated: Date.now(),
     creatorUsername,
   });
@@ -43,17 +44,16 @@ export default function AddLink() {
       <Box bg="white" p={5}>
         <Heading>Add a link</Heading>
         <FormControl>
-          <FormLabel>URL</FormLabel>
+          <FormLabel>Title</FormLabel>
           <InputGroup>
-            <InputLeftAddon children="https://" />
             <Input
-              id="url"
-              type="url"
-              name="url"
-              value={link.url}
+              id="title"
+              type="title"
+              name="title"
+              value={link.title}
               onChange={handleChange}
               required
-              placeholder="Paste URL here:"
+              placeholder="Title goes here"
             />
           </InputGroup>
         </FormControl>
@@ -70,6 +70,23 @@ export default function AddLink() {
             placeholder="Describe why this link is useful:"
           />
         </FormControl>
+
+        <FormControl>
+          <FormLabel>URL</FormLabel>
+          <InputGroup>
+            <InputLeftAddon children="https://" />
+            <Input
+              id="url"
+              type="url"
+              name="url"
+              value={link.url}
+              onChange={handleChange}
+              required
+              placeholder="Paste URL here:"
+            />
+          </InputGroup>
+        </FormControl>
+
         <Button mt={4} colorScheme="teal" onClick={onSubmit}>
           Submit
         </Button>
