@@ -1,12 +1,18 @@
 import React from "react";
 import { Box, Text, Button } from "@chakra-ui/react";
+import axios from 'axios';
 
 export default function SearchResultsBox({ searchResults, searchQuery }) {
-  console.log({ searchResults });
 
-  const follow = (userId) => {
-    console.log({ userId });
-  }
+  const idOfLoggedInUser = localStorage.getItem('userId')
+  const follow = (userIdToFollow) => {
+    const idToLoggedInUserToNumber = Number(idOfLoggedInUser);
+    axios.post('http://localhost:5000/follow', {
+      loggedInUserId: idToLoggedInUserToNumber,
+      userIdToFollow,
+    });
+  };
+
 
   return (
     <Box p={5}>
@@ -16,7 +22,7 @@ export default function SearchResultsBox({ searchResults, searchQuery }) {
         {searchResults &&
           searchResults?.map((item) => {
             return (
-              <Box boxShadow="base" bg="gray.50" m={5} p={5}>
+              <Box key={item.userId} boxShadow="base" bg="gray.50" m={5} p={5}>
                 <Text>{item.fullName}</Text>
                 <Text>{item.username}</Text>
                 <Text>{item?.location}</Text>

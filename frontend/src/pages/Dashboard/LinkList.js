@@ -21,13 +21,13 @@ export default function LinkList({ username }) {
       .catch((error) => {
         console.log(error);
       });
-  }, [creatorId]);
+  }, []);
+
 
   return (
     <>
       <Box bg="gray.50" rounded="lg" boxShadow="base" margin={50} padding={50}>
         <Heading>Your live links for {username}</Heading>
-        <Box>
           {linkList?.map((item, key) => {
             return (
               <>
@@ -41,7 +41,6 @@ export default function LinkList({ username }) {
               </>
             );
           })}
-        </Box>
       </Box>
     </>
   );
